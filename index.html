@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ardoff Offroad Kulübü - Kurallar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a4a 50%, #1e3a5f 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            border: 2px solid #4CAF50;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(76, 175, 80, 0.2) 50%, transparent 70%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #4CAF50;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #E3F2FD;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .description {
+            font-size: 1rem;
+            color: #B3E5FC;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pdf-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            border: 2px solid #2196F3;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+
+        .pdf-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .pdf-title {
+            font-size: 1.5rem;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+        }
+
+        .btn:hover {
+            background: linear-gradient(45deg, #1976D2, #388E3C);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.5);
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 80vh;
+            border: none;
+            border-radius: 10px;
+            background: #ffffff;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .fallback-message {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .fallback-message h3 {
+            color: #4CAF50;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .fallback-message p {
+            color: #B3E5FC;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: #81C784;
+            border-top: 1px solid #4CAF50;
+        }
+
+        .tire-tracks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.03;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 20px, #4CAF50 20px, #4CAF50 25px),
+                repeating-linear-gradient(-45deg, transparent, transparent 20px, #2196F3 20px, #2196F3 25px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .pdf-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .controls {
+                justify-content: center;
+            }
+            
+            .pdf-viewer {
+                height: 70vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="tire-tracks"></div>
+    
+    <div class="container">
+        <header class="header">
+            <h1 class="logo">🏔️ ARDOFF</h1>
+            <p class="subtitle">Offroad Kulübü</p>
+            <p class="description">
+                Doğanın gücünü hisseden, maceraya tutkulu, off-road severlerin buluşma noktası. 
+                Ardoff Kulübü olarak, güvenli ve sorumlu off-road sürüş deneyimleri sunuyoruz.
+            </p>
+        </header>
+
+        <div class="pdf-container">
+            <div class="pdf-header">
+                <h2 class="pdf-title">📋 Kulüp Kuralları</h2>
+                <div class="controls">
+                    <a href="kurallar.pdf" target="_blank" class="btn">
+                        📄 Yeni Sekmede Aç
+                    </a>
+                    <a href="kurallar.pdf" download class="btn">
+                        💾 İndir
+                    </a>
+                </div>
+            </div>
+
+            <iframe 
+                src="kurallar.pdf" 
+                class="pdf-viewer"
+                title="Ardoff Kulüp Kuralları">
+            </iframe>
+
+            <div class="fallback-message" style="display: none;" id="fallback">
+                <h3>🚨 PDF Görüntülenemiyor</h3>
+                <p>
+                    Tarayıcınız PDF dosyalarını desteklemiyor olabilir. 
+                    Lütfen aşağıdaki seçenekleri kullanın:
+                </p>
+                <a href="kurallar.pdf" target="_blank" class="btn">
+                    📄 Yeni Sekmede Aç
+                </a>
+                <a href="kurallar.pdf" download class="btn">
+                    💾 İndir
+                </a>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>© 2024 Ardoff Offroad Kulübü - Macera bizi bekliyor! 🚙💨</p>
+        </footer>
+    </div>
+
+    <script>
+        // PDF görüntüleme kontrolü
+        const iframe = document.querySelector('.pdf-viewer');
+        const fallback = document.getElementById('fallback');
+        
+        iframe.addEventListener('load', function() {
+            // PDF yüklenme kontrolü
+            setTimeout(() => {
+                try {
+                    if (!iframe.contentDocument && !iframe.contentWindow) {
+                        throw new Error('PDF yüklenemedi');
+                    }
+                } catch (e) {
+                    iframe.style.display = 'none';
+                    fallback.style.display = 'block';
+                }
+            }, 1000);
+        });
+
+        // PDF yükleme hatası kontrolü
+        iframe.addEventListener('error', function() {
+            iframe.style.display = 'none';
+            fallback.style.display = 'block';
+        });
+
+        // Responsive kontroller
+        function updateViewerHeight() {
+            const viewer = document.querySelector('.pdf-viewer');
+            const headerHeight = document.querySelector('.header').offsetHeight;
+            const pdfHeaderHeight = document.querySelector('.pdf-header').offsetHeight;
+            const availableHeight = window.innerHeight - headerHeight - pdfHeaderHeight - 120;
+            viewer.style.height = Math.max(400, availableHeight) + 'px';
+        }
+
+        window.addEventListener('resize', updateViewerHeight);
+        window.addEventListener('load', updateViewerHeight);
+    </script>
+</body>
+</html>
