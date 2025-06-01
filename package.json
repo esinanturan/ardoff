@@ -1,0 +1,26 @@
+{
+  "name": "ardoff-offroad-club",
+  "version": "1.0.0",
+  "description": "Ardoff Offroad Kulübü - Club Rules PDF Viewer",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Static site - no build required'",
+    "start": "echo 'Static site ready for deployment'"
+  },
+  "keywords": [
+    "offroad",
+    "club",
+    "ardoff",
+    "pdf-viewer",
+    "static-site"
+  ],
+  "author": "Ardoff Offroad Club",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+} 
